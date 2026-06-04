@@ -1,0 +1,6 @@
+usenet
+remailers
+hivemind-plugin-manager
+hivemind_bus_client
+ovos-utils
+ovos-bus-client

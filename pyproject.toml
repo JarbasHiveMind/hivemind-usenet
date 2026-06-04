@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hivemind-usenet"
+dynamic = ["version"]
+description = "HiveMind transport over Usenet: carrier framing, wormhole (NetworkProtocol), and NL bridge"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+dependencies = [
+    "usenet",
+    "remailers",
+    "hivemind-plugin-manager",
+    "hivemind_bus_client",
+    "hivemind-core",
+    "ovos-utils",
+    "ovos-bus-client",
+]
+
+[project.scripts]
+hivemind-usenet-wormhole = "hivemind_usenet.wormhole:main"
+hivemind-usenet-bridge   = "hivemind_usenet.bridge:main"
+
+[project.entry-points."hivemind.network.protocol"]
+hivemind-usenet-wormhole = "hivemind_usenet.wormhole:UsenetWormhole"
+
+[tool.setuptools]
+packages = ["hivemind_usenet"]
+include-package-data = true
+
+[tool.setuptools.dynamic]
+version = {attr = "hivemind_usenet.version.__version__"}
