@@ -10,8 +10,8 @@ readme = "README.md"
 license = {text = "Apache-2.0"}
 requires-python = ">=3.10"
 dependencies = [
-    "usenet",
-    "remailers",
+    "usenet @ git+https://github.com/TigreGotico/usenet",
+    "remailers @ git+https://github.com/TigreGotico/remailers",
     "hivemind-plugin-manager",
     "hivemind_bus_client",
     "hivemind-core",
@@ -22,6 +22,7 @@ dependencies = [
 [project.scripts]
 hivemind-usenet-wormhole = "hivemind_usenet.wormhole:main"
 hivemind-usenet-bridge   = "hivemind_usenet.bridge:main"
+hivemind-usenet-client   = "hivemind_usenet.client:main"
 
 [project.entry-points."hivemind.network.protocol"]
 hivemind-usenet-wormhole = "hivemind_usenet.wormhole:UsenetWormhole"
