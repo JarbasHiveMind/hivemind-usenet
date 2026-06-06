@@ -16,7 +16,7 @@ dependencies = [
     "hivemind_bus_client",
     "hivemind-core",
     "ovos-utils",
-    "ovos-bus-client",
+    "ovos-bus-client>=2.0.0a3",
 ]
 
 [project.scripts]
