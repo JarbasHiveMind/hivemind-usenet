@@ -19,6 +19,12 @@ dependencies = [
     "ovos-bus-client>=2.0.0a3",
 ]
 
+[project.optional-dependencies]
+# hivescope = in-process e2e harness used by tests/e2e/. Declared here (not
+# pinned in CI). hivemind-core is already a runtime dep; resolving the full
+# 2.x stack is gated on HiveMind-core#108 publishing a bus-client-2.x alpha.
+test = ["pytest", "hivescope>=0.5.0a2"]
+
 [project.scripts]
 hivemind-usenet-wormhole = "hivemind_usenet.wormhole:main"
 hivemind-usenet-bridge   = "hivemind_usenet.bridge:main"
