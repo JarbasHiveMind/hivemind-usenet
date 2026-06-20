@@ -1,5 +1,6 @@
 [console_scripts]
 hivemind-usenet-bridge = hivemind_usenet.bridge:main
+hivemind-usenet-client = hivemind_usenet.client:main
 hivemind-usenet-wormhole = hivemind_usenet.wormhole:main
 
 [hivemind.network.protocol]
