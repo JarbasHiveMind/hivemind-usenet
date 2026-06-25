@@ -6,7 +6,9 @@ censorship-resistant mesh links carried by `alt.anonymous.messages`.
 - [How it works](how-it-works.md)
 - [Components](components.md)
 - [Configuration](configuration.md)
+- [Security model](security.md) — the two crypto layers, threat model, and the Python 3.12 ceiling.
 - [Examples](examples.md)
+- [Testing & development](testing.md) — running the offline suite and how the end-to-end carrier is faked.
 
 ## Status
 
