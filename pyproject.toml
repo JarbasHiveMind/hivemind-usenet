@@ -8,7 +8,9 @@ dynamic = ["version"]
 description = "HiveMind transport over Usenet: carrier framing, wormhole (NetworkProtocol), and NL bridge"
 readme = "README.md"
 license = {text = "Apache-2.0"}
-requires-python = ">=3.10"
+# <3.13: PGPy (carrier crypto via usenet/remailers) imports the stdlib
+# `imghdr` module, removed in Python 3.13.
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "usenet @ git+https://github.com/TigreGotico/usenet",
     "remailers @ git+https://github.com/TigreGotico/remailers",

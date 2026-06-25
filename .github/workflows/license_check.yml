@@ -8,3 +8,8 @@ on:
 jobs:
   license_check:
     uses: OpenVoiceOS/gh-automations/.github/workflows/license-check.yml@dev
+    with:
+      # usenet and remailers are TigreGotico Apache-2.0 deps installed from git,
+      # so the checker can't fetch their license from PyPI and reports "Error".
+      # Exclude them (both are Apache-2.0); unioned with the central whitelist.
+      exclude_packages: '^(usenet|remailers)$'
