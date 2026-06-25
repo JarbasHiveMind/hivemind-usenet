@@ -8,3 +8,12 @@ on:
 jobs:
   license_check:
     uses: OpenVoiceOS/gh-automations/.github/workflows/license-check.yml@dev
+    with:
+      # this package caps requires-python <3.13 (PGPy/imghdr); the workflow
+      # defaults to 3.14, which can't install it.
+      python_version: '3.12'
+      # usenet and remailers are TigreGotico Apache-2.0 deps installed from git,
+      # so the checker can't fetch their license from PyPI and reports "Error".
+      # Exclude them (both are Apache-2.0). pilosus matches the resolved
+      # "name==version" string, so anchor the name with an optional version suffix.
+      exclude_packages: '(?i:^usenet([=<>!~ @;].*)?$)|(?i:^remailers([=<>!~ @;].*)?$)'

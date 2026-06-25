@@ -1,6 +1,7 @@
-usenet
-remailers
+usenet @ git+https://github.com/TigreGotico/usenet
+remailers @ git+https://github.com/TigreGotico/remailers
 hivemind-plugin-manager
 hivemind_bus_client
+hivemind-core
 ovos-utils
-ovos-bus-client
+ovos-bus-client>=2.0.0a3

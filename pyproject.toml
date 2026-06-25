@@ -8,16 +8,24 @@ dynamic = ["version"]
 description = "HiveMind transport over Usenet: carrier framing, wormhole (NetworkProtocol), and NL bridge"
 readme = "README.md"
 license = {text = "Apache-2.0"}
-requires-python = ">=3.10"
+# <3.13: PGPy (carrier crypto via usenet/remailers) imports the stdlib
+# `imghdr` module, removed in Python 3.13.
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "usenet @ git+https://github.com/TigreGotico/usenet",
     "remailers @ git+https://github.com/TigreGotico/remailers",
-    "hivemind-plugin-manager",
-    "hivemind_bus_client",
-    "hivemind-core",
+    "hivemind-plugin-manager>=0.7.1a1",
+    "hivemind_bus_client>=0.9.2a1",
+    "hivemind-core>=4.6.2a1",
     "ovos-utils",
     "ovos-bus-client>=2.0.0a3",
 ]
+
+[project.optional-dependencies]
+# hivescope = in-process e2e harness used by tests/e2e/. Declared here (not
+# pinned in CI). hivescope>=0.5.2a1 floors the bus-client 2.x stack
+# (hivemind-core>=4.6.2a1, hivemind-bus-client>=0.9.2a1, ovos-bus-client>=2.0.0a3).
+test = ["pytest", "hivescope>=0.5.2a1"]
 
 [project.scripts]
 hivemind-usenet-wormhole = "hivemind_usenet.wormhole:main"

@@ -8,3 +8,7 @@ on:
 jobs:
   pip_audit:
     uses: OpenVoiceOS/gh-automations/.github/workflows/pip-audit.yml@dev
+    with:
+      # this package caps requires-python <3.13 (PGPy/imghdr); the workflow
+      # defaults to 3.14, which can't install it.
+      python_version: '3.12'
