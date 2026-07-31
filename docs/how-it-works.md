@@ -18,7 +18,7 @@ payload ──chunk──▶ Frame{v, mid, seq, n, kind, data(b64)} ──PGP en
 - Each frame is PGP-encrypted to the peer's public key, then posted to the
   newsgroup.
 
-## Addressing — hSub
+## Addressing: hSub
 
 Articles are addressed with **hSub** (hashed subject), a shared-secret scheme:
 
@@ -26,16 +26,17 @@ Articles are addressed with **hSub** (hashed subject), a shared-secret scheme:
 - The receiver scans the group and keeps only articles where
   `match_hsub(subject, my_secret)` is true.
 
-Because it is symmetric, both peers must agree on the passphrase out of band. The
-recipient is hidden — only a holder of the secret can tell which articles are
-theirs.
+Because it is symmetric, both peers must agree on the passphrase out of band.
+The recipient stays hidden. Only a holder of the secret can tell which articles
+are theirs.
 
 ## Confidentiality
 
-PGP encryption is the transport's equivalent of TLS for a WebSocket: every frame
-is encrypted to the peer's pubkey. The HiveMind handshake and its AES session key
-negotiation ride on top, unchanged — HELLO/HANDSHAKE are ordinary HiveMessages,
-serialised, chunked, encrypted, and posted by the carrier.
+PGP encryption is the transport's equivalent of TLS for a WebSocket: every
+frame is encrypted to the peer's pubkey. The HiveMind handshake and its AES
+session key negotiation ride on top, unchanged. HELLO and HANDSHAKE are
+ordinary HiveMessages, serialized, chunked, encrypted, and posted by the
+carrier.
 
 ## Poll and reassembly
 
@@ -49,7 +50,10 @@ There is no push. Each node polls the group on a cadence (`poll_seconds`):
 
 ## Latency
 
-A poll cycle can take 30 s or more depending on server load and `poll_seconds`, and
-the full HiveMind handshake spans several cycles before the AES session is
-established. Timeouts are intentionally generous. Treat this as an async/covert
-link, not a real-time channel.
+A poll cycle can take 30 s or more, depending on server load and
+`poll_seconds`. The full HiveMind handshake spans several cycles before the AES
+session is established. Timeouts are intentionally generous. Treat this as an
+async or covert link, not a real-time channel.
+
+---
+[Home](index.md) · [Components →](components.md)
