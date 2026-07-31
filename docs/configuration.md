@@ -48,5 +48,8 @@ articles with `my_secret` and **post** with the peer's secret.
 ## Servers
 
 The public anon-post hosts that accept posts without an account are
-`paganini.bofh.team` (default) and `news.tcpreset.net`. Pick a low-traffic group if
-running a dedicated link.
+`paganini.bofh.team` (default) and `news.tcpreset.net`. Pick a low-traffic group
+if running a dedicated link.
+
+---
+[← Components](components.md) · [Home](index.md) · [Security model →](security.md)

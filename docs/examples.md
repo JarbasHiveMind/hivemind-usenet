@@ -39,5 +39,8 @@ Before either demo works, both peers must have exchanged out of band:
 1. A shared hSub passphrase per direction.
 2. Each other's PGP public keys (the `--peer-pubkey` / `--reply-pubkey` files).
 
-The local PGP identity at `--key-path` is generated automatically on first run if
-the file does not exist.
+The local PGP identity at `--key-path` is generated automatically on first run
+if the file does not exist.
+
+---
+[← Security model](security.md) · [Home](index.md) · [Testing & development →](testing.md)
