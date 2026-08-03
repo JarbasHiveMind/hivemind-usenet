@@ -171,7 +171,7 @@ class TestWormhole:
 
         # Build a HiveMessage with large payload
         big_data  = {"blob": "X" * (CHUNK_SIZE * 3)}
-        original  = HiveMessage(HiveMessageType.THIRDPRTY, payload=big_data)
+        original  = HiveMessage(HiveMessageType.RENDEZVOUS, payload=big_data)
         payload   = original.serialize().encode()
         assert len(payload) > CHUNK_SIZE  # ensure it actually chunks
 

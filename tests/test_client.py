@@ -228,7 +228,7 @@ class TestClientToHub:
     def test_large_message_chunked_and_reassembled(self):
         client, wormhole, slave_p, hub_p, cc, ch = _make_pair()
 
-        big = HiveMessage(HiveMessageType.THIRDPRTY,
+        big = HiveMessage(HiveMessageType.RENDEZVOUS,
                           payload={"blob": "X" * (CHUNK_SIZE * 3)})
         assert len(big.serialize().encode()) > CHUNK_SIZE
 
