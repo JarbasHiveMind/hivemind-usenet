@@ -233,6 +233,18 @@ class TestWormhole:
         assert wh_b._client_conn is not None
         assert wh_b._client_conn.key == wh_b.config.get("peer_id", "usenet-peer")
 
+    def test_disconnect_accepts_a_close_code_and_reason(self):
+        """hivemind-core calls client.disconnect(1008, reason) on handshake
+        rejection; the callback wired in here must not TypeError on that call."""
+        hm_protocol = _FakeHmProtocol()
+        hm_protocol.identity_rsa_key = None
+        conn = _make_client_connection("peer1", carrier=object(),
+                                        peer_secret="s", peer_pubkey="k",
+                                        hm_protocol=hm_protocol)
+
+        conn.disconnect(1008, "invalid credentials")
+        conn.disconnect()
+
     def test_stop_event(self):
         wh_a, wh_b, hm_a, hm_b, server, ca, cb = _make_wormhole_pair()
         wh_a._stop_event.set()
