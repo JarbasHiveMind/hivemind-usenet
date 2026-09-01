@@ -67,6 +67,11 @@ class _FakeIdentity:
 
 class _FakeHmProtocol:
     """Minimal HiveMindListenerProtocol stub (hub side)."""
+    # HiveMindClientConnection builds its per-connection HandShake from the
+    # protocol's cached RSA identity key; None is a valid stand-in since
+    # these tests never validate the handshake's private key material.
+    identity_rsa_key = None
+
     def __init__(self) -> None:
         self.received: List[HiveMessage] = []
         self.lock      = threading.Lock()
