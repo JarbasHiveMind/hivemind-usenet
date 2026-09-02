@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.2a2](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.2a2) (2026-09-02)
+
+[Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.2a1...0.1.2a2)
+
 ## [0.1.2a1](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.2a1) (2026-09-01)
 
 [Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.1a6...0.1.2a1)
