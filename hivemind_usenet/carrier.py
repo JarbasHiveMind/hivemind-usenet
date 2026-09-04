@@ -229,7 +229,12 @@ class UsenetCarrier:
 
         results: List[Tuple[str, bytes]] = []
 
-        for article in articles:
+        # Servers return the most recent N articles, typically newest-first
+        # (see e.g. tests/e2e's FakeNNTPServer). Multi-message handshakes
+        # (HELLO then HANDSHAKE) depend on send order being preserved on
+        # reassembly, so replay them oldest-first regardless of the
+        # transport's own ordering.
+        for article in reversed(articles):
             subject = getattr(article, "subject", "") or ""
             if not match_hsub(subject, my_secret):
                 continue
