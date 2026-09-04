@@ -189,7 +189,7 @@ class UsenetLink:
             key=self.sat_identity.access_key,
             name=self.sat_identity.name,
             send_msg=self._master_send,
-            disconnect=lambda: None,
+            disconnect=lambda code=None, reason=None: None,
             sess=Session(session_id="default"),
             hm_protocol=self.master.hm_protocol,
             pswd_handshake=(
@@ -210,7 +210,20 @@ class UsenetLink:
         for kind, payload in self.client_carrier.poll(_HUB_TO_CLIENT):
             if kind != _KIND_HIVE:
                 continue
-            message = self.conn.decode(payload.decode())
+            if getattr(self.shim, "noise_transport", None) is not None:
+                # A v3 Noise session is encrypted with reciprocal (not
+                # shared) CipherStates per direction. This frame was
+                # encrypted by the *master's* noise_transport (its send
+                # key); decrypting it must go through the *satellite's*
+                # noise_transport (its matching receive key) -- reusing
+                # self.conn.decode() here would decrypt with the master's
+                # own object and fail AEAD (wrong direction).
+                plaintext = self.shim.noise_transport.decrypt_frame(payload)
+                if isinstance(plaintext, bytes):
+                    plaintext = plaintext.decode()
+                message = HiveMessage.deserialize(plaintext)
+            else:
+                message = self.conn.decode(payload.decode())
             self.shim.emitter.emit(message.msg_type, message)
             delivered += 1
         return delivered

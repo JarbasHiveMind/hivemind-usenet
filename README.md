@@ -94,8 +94,13 @@ hivemind-usenet-wormhole \
 hivemind-usenet-bridge \
     --my-secret "bridge-codeword" \
     --hive-host 127.0.0.1 \
-    --hive-key  "my-hivemind-api-key"
+    --hive-key  "my-hivemind-api-key" \
+    --hive-password "my-hivemind-password"
 ```
+
+`--hive-key` is the access key and `--hive-password` is the Noise PSK
+password -- both are required to authenticate against a v3-Noise-only
+HiveMind hub. The legacy `crypto_key` is not used for authentication.
 
 `--my-secret` is the hSub passphrase you **read** with. `--peer-secret` is the
 one you **post** with, and the peer reads it. They are the mirror image on the

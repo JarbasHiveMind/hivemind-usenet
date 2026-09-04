@@ -34,14 +34,18 @@ class TestHandshakeOverUsenet:
 
         assert link.shim.handshake_event.is_set(), \
             "satellite never reached handshake_event"
-        assert link.conn.crypto_key is not None, "master derived no session key"
-        assert link.shim.crypto_key is not None, "satellite derived no session key"
+        # v3 (Noise) sessions carry their session key in noise_transport, not
+        # the legacy crypto_key attribute.
+        assert link.conn.noise_transport is not None, "master derived no session key"
+        assert link.shim.noise_transport is not None, "satellite derived no session key"
 
     def test_both_ends_derive_the_same_session_key(self):
-        """The AES session key is identical on master and satellite."""
+        """Master and satellite derived reciprocal Noise CipherStates: a
+        frame either side encrypts, the other decrypts."""
         link = UsenetLink(password_handshake=True)
         link.handshake()
-        assert link.conn.crypto_key == link.shim.crypto_key
+        frame = link.conn.noise_transport.encrypt_frame(b"ping")
+        assert link.shim.noise_transport.decrypt_frame(frame) == b"ping"
 
     def test_master_registers_connected_peer(self):
         link = UsenetLink(password_handshake=True)
