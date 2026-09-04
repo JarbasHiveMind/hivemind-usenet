@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.3a1](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.3a1) (2026-09-04)
+
+[Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.2a7...0.1.3a1)
+
+**Merged pull requests:**
+
+- fix: authenticate via password \(v3 Noise PSK\) instead of relying on the removed crypto\_key [\#13](https://github.com/JarbasHiveMind/hivemind-usenet/pull/13) ([JarbasAl](https://github.com/JarbasAl))
+
+## [0.1.2a7](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.2a7) (2026-09-03)
+
+[Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.2a6...0.1.2a7)
+
 ## [0.1.2a6](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.2a6) (2026-09-02)
 
 [Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.2a5...0.1.2a6)
