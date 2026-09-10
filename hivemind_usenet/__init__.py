@@ -1,3 +1,4 @@
+"""Implements the Usenet binding of HIVEMIND-TRANSPORT-1 §6."""
 from hivemind_usenet.carrier import UsenetCarrier, Frame, CarrierBuffer
 from hivemind_usenet.wormhole import UsenetWormhole
 from hivemind_usenet.bridge import UsenetBridge
