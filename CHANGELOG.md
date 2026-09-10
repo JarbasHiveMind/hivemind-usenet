@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3a2](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.3a2) (2026-09-10)
+
+[Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.3a1...0.1.3a2)
+
+**Merged pull requests:**
+
+- docs: cite the governing specification in the module docstring [\#14](https://github.com/JarbasHiveMind/hivemind-usenet/pull/14) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.3a1](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.3a1) (2026-09-04)
 
 [Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.2a7...0.1.3a1)
