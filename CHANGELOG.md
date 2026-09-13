@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3a3](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.3a3) (2026-09-13)
+
+[Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.3a2...0.1.3a3)
+
+**Merged pull requests:**
+
+- chore: raise hivescope floor to \>=0.8.6a1 [\#15](https://github.com/JarbasHiveMind/hivemind-usenet/pull/15) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.3a2](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.3a2) (2026-09-10)
 
 [Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.3a1...0.1.3a2)
