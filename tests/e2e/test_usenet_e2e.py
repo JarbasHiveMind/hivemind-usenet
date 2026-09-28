@@ -2,7 +2,7 @@
 
 These exercise the *full* protocol stack over the *real* transport, with only
 the NNTP server faked (an in-memory article store — no socket, no network).
-See :mod:`tests.e2e.usenet_link` for the harness; the round-trip path is:
+See :mod:`.usenet_link` for the harness; the round-trip path is:
 
     satellite slave-protocol
         → HiveMessage.serialize()
@@ -18,7 +18,7 @@ from ovos_bus_client.message import Message
 
 from hivemind_bus_client.message import HiveMessage, HiveMessageType
 
-from tests.e2e.usenet_link import UsenetLink
+from .usenet_link import UsenetLink
 
 
 # ---------------------------------------------------------------------------
@@ -194,7 +194,7 @@ class TestCarrierBehaviourEndToEnd:
 
     def test_no_real_network_used(self):
         """Sanity: the carrier server is the in-memory fake, not UsenetServer."""
-        from tests.e2e.usenet_link import FakeNNTPServer
+        from .usenet_link import FakeNNTPServer
         link = UsenetLink()
         assert isinstance(link.server, FakeNNTPServer)
         assert isinstance(link.hub_carrier.server, FakeNNTPServer)
