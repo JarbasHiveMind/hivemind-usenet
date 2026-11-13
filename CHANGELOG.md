@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.4a1](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.4a1) (2026-11-13)
+
+[Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.3a3...0.1.4a1)
+
+**Merged pull requests:**
+
+- fix\(tests\): import the e2e helper relatively, and drop tests/\_\_init\_\_.py [\#16](https://github.com/JarbasHiveMind/hivemind-usenet/pull/16) ([openvoiceos-bot](https://github.com/openvoiceos-bot))
+
 ## [0.1.3a3](https://github.com/JarbasHiveMind/hivemind-usenet/tree/0.1.3a3) (2026-09-13)
 
 [Full Changelog](https://github.com/JarbasHiveMind/hivemind-usenet/compare/0.1.3a2...0.1.3a3)
