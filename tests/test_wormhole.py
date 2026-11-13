@@ -238,6 +238,28 @@ class TestWormhole:
         assert wh_b._client_conn is not None
         assert wh_b._client_conn.key == wh_b.config.get("peer_id", "usenet-peer")
 
+    def test_a_newline_in_the_reason_does_not_split_the_log_record(self):
+        wh_a, wh_b, hm_a, hm_b, server, ca, cb = _make_wormhole_pair()
+
+        original = HiveMessage(HiveMessageType.PING, payload={})
+        payload  = original.serialize().encode()
+        ca.send(payload,
+                peer_secret=wh_a.config["peer_secret"],
+                peer_pubkey=wh_a.config["peer_pubkey"],
+                kind=_KIND_HIVE)
+
+        _wh_poll_once(wh_b)
+
+        assert wh_b._client_conn is not None
+
+        with patch("hivemind_usenet.wormhole.LOG.debug") as mock_debug:
+            wh_b._client_conn.disconnect(1008, "rejected\nBcc: attacker@evil.test")
+
+        mock_debug.assert_called_once()
+        logged = mock_debug.call_args.args[0]
+        assert "\nBcc: attacker@evil.test" not in logged
+        assert "\\n" in logged
+
     def test_stop_event(self):
         wh_a, wh_b, hm_a, hm_b, server, ca, cb = _make_wormhole_pair()
         wh_a._stop_event.set()

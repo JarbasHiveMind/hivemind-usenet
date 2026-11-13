@@ -53,7 +53,7 @@ def _make_client_connection(peer_id: str, carrier: UsenetCarrier,
 
     def _disconnect(code: int = 1000, reason: str = "") -> None:
         LOG.debug(f"UsenetWormhole: peer disconnected: {peer_id} "
-                  f"(code={code}, reason={reason})")
+                  f"(code={code}, reason={reason!r})")
 
     return HiveMindClientConnection(
         key         = peer_id,
